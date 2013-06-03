@@ -336,7 +336,21 @@ import net.zettadata.generator.tools.ToolboxException;
 		}
 	}
 	
-	.|\n
+	"&#xD;"
+	{}
+	
+	"’"
+	{
+		tmp.append( "'" ) ;
+	}
+
+	
+	\r|\n
+	{
+		tmp.append( " " ) ;
+	}
+	
+	.
 	{
 		tmp.append( yytext() ) ;
  	}
@@ -370,15 +384,23 @@ import net.zettadata.generator.tools.ToolboxException;
 		lblock.setAbstract( language, tmptext ) ;
 	}
 	
-	.
+	"’"
 	{
-		tmp.append( yytext() ) ; 
+		tmp.append( "'" ) ;
 	}
 	
-	\n
+	"&#xD;"
+	{}
+	
+	\r|\n
 	{
 		tmp.append( " " ) ;
 	}
+	
+	.
+	{
+		tmp.append( yytext() ) ;
+ 	}
 }
 
 /* error fallback */
