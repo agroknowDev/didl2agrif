@@ -308,7 +308,17 @@ import net.zettadata.generator.tools.ToolboxException;
 	{
 		String tmptext = extract( yytext() ) ;
 		language = getLanguageFor( tmptext ) ;
-		lblock.setKeyword( language, tmptext ) ;
+		if ( tmptext.contains( "," ) )
+		{
+			for ( String t: tmptext.split( "," ) )
+			{
+				lblock.setKeyword( language, t.trim() ) ;
+			}
+		}
+		else
+		{ 
+			lblock.setKeyword( language, tmptext ) ;
+		}
 	}
 	
 	"<dc:description>"
