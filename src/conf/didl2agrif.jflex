@@ -371,8 +371,7 @@ import net.zettadata.generator.tools.ToolboxException;
 {
 	"</dc:identifier>"
 	{
-		citation.setTitle( tmp.toString() ) ;
-		expression.setCitation( citation ) ;
+		expression.setFullCitation( tmp.toString() ) ;
 		yybegin( AGRIF ) ;
 	}
 
